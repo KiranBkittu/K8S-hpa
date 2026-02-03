@@ -1,0 +1,18 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoScaler
+metadata:
+  name: hpa-test
+spec:
+  scaleTargetRef: # details of the deployment which we are planning for hpa
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nginx-autoscaller 
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+    - type: resource
+      resource: 
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50

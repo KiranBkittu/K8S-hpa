@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-autoscaller
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      pupose: test
+  template:
+    metadata:
+      labels:
+        purpose: test
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "200m"
+          ports:
+          - containerPort: 80
+
