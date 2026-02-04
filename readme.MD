@@ -1,3 +1,10 @@
+to configure hpa we require metric server so we using metric-component.yaml of below link
+
+post changes we require rollout restart
+
+kubectl rollout restart deployment metrics-server -n kube-system
+
+
 metrics service should be installed if not need to installed install it
 
 kubectl get pods -n kube-system | grep metrics
@@ -5,6 +12,7 @@ kubectl get pods -n kube-system | grep metrics
 To install metric server
 
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
 
 to check load and status
 
@@ -16,7 +24,7 @@ kubectl get hpa
 
 To run the load 
 
-kubectl run load-test --image=busybox -- /bin/sh
+kubectl run load-generator --image=busybox -it --rm -- sh
 
 Inside the pod
 
