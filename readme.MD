@@ -8,6 +8,8 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/late
 
 to check load and status
 
+kubectl get pods -n kube-system | grep metrics
+
 kubectl top pods
 
 kubectl get hpa
