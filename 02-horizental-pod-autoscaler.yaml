@@ -2,7 +2,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: hpa-test
-  namespcae: "default"
+  namespace: "default"
 spec:
   scaleTargetRef: # details of the deployment which we are planning for hpa
     apiVersion: apps/v1
